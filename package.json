@@ -26,5 +26,13 @@
     "nodemailer": "^6.7.3",
     "nodemon": "^2.0.15",
     "pug": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayaabusoud/WebProject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ayaabusoud/WebProject/issues"
+  },
+  "homepage": "https://github.com/ayaabusoud/WebProject#readme"
 }
