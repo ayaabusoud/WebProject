@@ -5,6 +5,8 @@ const nodemailer = require("nodemailer");
 const dbDebugger = require('debug')('app:db');
 const router = express.Router();
 
+
+
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -19,6 +21,45 @@ const db = mysql.createConnection({
         dbDebugger("MYSQL connected ...")
     }
    });
+
+
+
+router.post('/signin' , async (req,res)=>{                       //           sign in 
+  const { email , password} = req.body;
+  db.query('SELECT * FROM user WHERE email  = ?',[email] , (error , results ) =>{
+        if(error){
+           console.log(error);
+      }
+       if(results.length > 0){
+          bcrypt.compare(password, results[0].password,(err,response)=>{
+              if(response){
+                  req.session.userID = req.body;
+                    if(results[0].type === 'admin'){
+                      return  res.redirect('/admin');
+                    }
+                    else{
+                      return  res.redirect('/user'); 
+                    }
+              }
+              else{
+                  return res.render('signin' , {
+                      message: 'wrong password.'
+                    })
+              }
+          })
+
+
+      }
+      else {
+          return res.render('signin' , {
+              message: 'email does not exists.'
+            })
+      }
+  })
+}) 
+
+
+
 
 router.post('/forgotPass', (req,res)=>{
     const email = req.body.email;
