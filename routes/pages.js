@@ -81,20 +81,10 @@ router.get('/adminapartment', (req, res) => {
             res.render('adminApartment',{rows});
         }
     })
-  
 });
 
-router.get('/apartments', (req, res) => {
-   
-    db.query('SELECT * FROM apartment WHERE NOT remainingRoommates = 0 ' , (error , rows ) =>{
-        
-        if(error)console.log(error)
-        else{
-            res.render('apartments',{rows});
-        }
-    })
-    
-}); 
+
+
 
 
 
