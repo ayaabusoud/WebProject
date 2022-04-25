@@ -4,7 +4,7 @@
 <head>
   <title>Student Housings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
@@ -22,15 +22,15 @@
     <div class="container">
       <nav>
         <a href="#" class="logo"> <img src="image/logo.png" alt=""> </a>
-
+{{#each results}}
         <ul class="nav-menu">
           <li> <a href="/home" class="nav-link">Home</a> </li>
           <li> <a href="/adminapartment" class="nav-link">Apartments</a> </li>
           <li> <a href="/addApartment" class="nav-link">add Apartment</a> </li>
-          <li> <a href="/profile" class="nav-link">Profile</a> </li>
+          <li> <a href="/profile/{{id}}" class="nav-link">Profile</a> </li>
           <li><a href = "/logout" class="nav-link">LOG Out </a></li>
         </ul>
-
+{{/each}}
         <div class="hambuger">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -69,7 +69,7 @@
         </div>
       </div>
       <div class="image">
-        <img src="image/home3.jpg" class="slide">
+        <img src="/image/home3.jpg" class="slide">
       </div>
       
    
@@ -119,7 +119,7 @@
       <div class="content grid">
         <div class="box">
           <div class="img">
-            <img src="image/r1.jpg" alt="">
+            <img src="/image/r1.jpg" alt="">
           </div>
           <div class="text">
             <h3>Superior Soble Rooms</h3>
@@ -128,7 +128,7 @@
         </div>
         <div class="box">
           <div class="img">
-            <img src="image/r2.jpg" alt="">
+            <img src="/image/r2.jpg" alt="">
           </div>
           <div class="text">
             <h3>Superior Soble Rooms</h3>
@@ -137,7 +137,7 @@
         </div>
         <div class="box">
           <div class="img">
-            <img src="image/r3.jpg" alt="">
+            <img src="/image/r3.jpg" alt="">
           </div>
           <div class="text">
             <h3>Superior Soble Rooms</h3>

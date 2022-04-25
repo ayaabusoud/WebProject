@@ -102,9 +102,9 @@ router.post('/signin', async(req, res) => { //           sign in
                 if (response) {
                     req.session.userID = req.body;
                     if (results[0].type === 'admin') {
-                        return res.redirect('/admin');
+                        return res.render('admin',{results});
                     } else {
-                        return res.redirect('/user');
+                        return res.render('user',{results});
                     }
                 } else {
                     return res.render('signin', {
