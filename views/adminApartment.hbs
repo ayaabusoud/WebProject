@@ -32,6 +32,41 @@
 
 <section class="room top" id="departments" >
     <div class="container">
+
+
+
+<div id="filterSearch" >
+
+   {{!-- <label for="cars">Choose a car:</label>
+<select id="cars" name="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="fiat">Fiat</option>
+  <option value="audi">Audi</option>
+</select> --}}
+
+
+
+<form id="form" action="/search" method="get"> 
+
+  <input type="text" id="myInput" onkeyup="filter()" name="name"  placeholder="Search by City name.." title="Type in a name" value="{{searchInput}}"> 
+  <br>
+  {{!-- <button type="submit" style="color:red">  go search </button> --}}
+</form>
+                                                             
+              
+
+      </div>
+
+
+
+
+
+
+
+
+
+
       <div class="heading_top flex1">
         <div class="heading">
           <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
@@ -68,6 +103,22 @@
       </div>
     </div>
   </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script>
+ const form = document.getElementById('form');
+   const inputF = document.getElementById("myInput");
+  
+            
+ function filter()
+ {
+let inputValue = document.getElementById("myInput").value; 
+console.log("input " +inputValue);
+  document.getElementById("myInput").innerHTML = inputValue; 
 
+   form.submit();
+
+ }
+
+</script>
 </body>
 </html>
