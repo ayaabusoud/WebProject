@@ -21,10 +21,10 @@
   <header class="header" id="navigation-menu">
     <div class="container">
       <nav>
-        <a href="#" class="logo"> <img src="image/logo.png" alt=""> </a>
-{{#each results}}
+        {{#each results}}
+        <a href="#" class="logo"> <img src="/image/logo.png" alt=""> </a>
+
         <ul class="nav-menu">
-          <li> <a href="/home" class="nav-link">Home</a> </li>
           <li> <a href="/adminapartment" class="nav-link">Apartments</a> </li>
           <li> <a href="/addApartment" class="nav-link">add Apartment</a> </li>
           <li> <a href="/profile/{{id}}" class="nav-link">Profile</a> </li>
