@@ -114,17 +114,7 @@ router.get('/adminapartment/:id', (req, res) => {
     })
 });
 
-router.get('/profile/:id',redirectLogin, (req, res) => {
-    console.log("Hi")
-    let id = req.params.id;
-    db.query('SELECT * FROM user WHERE id = ? ' ,[id], (error , rows ) =>{
-         
-        if(error)console.log(error)
-        else{
-            res.render('profile',{rows});
-        }
-     })
-});
+
 
 
 
