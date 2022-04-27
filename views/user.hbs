@@ -21,16 +21,15 @@
   <header class="header" id="navigation-menu">
     <div class="container">
       <nav>
+        {{#each results}}
         <a href="#" class="logo"> <img src="/image/logo.png" alt=""> </a>
-
         <ul class="nav-menu">
-          <li> <a href="/user" class="nav-link">Home</a> </li>
           <li> <a href="#about" class="nav-link">About</a> </li>
-          <li> <a href="/userapartment" class="nav-link">apartments</a> </li>
+          <li> <a href="/userapartment/{{id}}" class="nav-link">Apartments</a> </li>
           <li> <a href="/profile/{{id}}" class="nav-link">Profile</a> </li>
           <li><a href = "/logout" class="nav-link">LOG Out </a></li>
         </ul>
-
+        {{/each}}
         <div class="hambuger">
           <span class="bar"></span>
           <span class="bar"></span>

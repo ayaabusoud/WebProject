@@ -8,7 +8,8 @@
 </head>
 <body>
     <h2>add Apartments</h2>
-    <form method="POST" action="/admin/apartmentDB" enctype="multipart/form-data">
+    {{#each results}}
+    <form method="POST" action="/admin/apartmentDB/{{id}}" enctype="multipart/form-data">
     <input type="number" name="monthlyCost" placeholder="Monthly Cost">
     <input type="text" name="space" placeholder="Space">
     <input type="text" name="description" placeholder="Description">
@@ -22,5 +23,6 @@
     <input type="file" name="apatrmentImage" placeholder="apatrment Image" >
     <input type="submit" >
     </form>
+    {{/each}}
 </body>
 </html>

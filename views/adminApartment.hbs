@@ -13,15 +13,14 @@
     <div class="container" >
       <nav>
         <a href="#" class="logo"> <img src="/image/logo.png" alt=""> </a>
-
+{{#each results}}
         <ul class="nav-menu">
-          <li> <a href="/admin" class="nav-link">Home</a> </li>
-          <li> <a href="/addapartment" class="nav-link">add Apartment</a> </li>
-          <li> <a href="/editDetails" class="nav-link">edit details</a> </li>
+          <li> <a href="/admin/{{id}}" class="nav-link">Home</a> </li>
+          <li> <a href="/addapartment{{id}}" class="nav-link">add Apartment</a> </li>
            <li> <a href="/profile/{{id}}" class="nav-link">Profile</a> </li>
           <li><a href = "/logout" class="nav-link">LOG Out </a></li>
         </ul>
-
+{{/each}}
         <div class="hambuger">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -91,7 +90,7 @@
             <input type="submit" value="edit">
             </form>
             
-            <form action="/admin/delete/{{id}}" method="get">
+            <form action="/admin/delete/{{id}}?_method=DELETE" method="POST">
             <input type="submit" name = "delete" value="delete apartment">
             </form>
             <form action="/admin/info/{{id}}" method="get">

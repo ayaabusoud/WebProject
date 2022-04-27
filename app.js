@@ -8,7 +8,7 @@ const admin = require('./routes/admin');
 const user = require('./routes/user');
 const pages = require('./routes/pages');
 const app = express();
-
+const methodOverride = require("method-override");
 const two_hours = 1000*60*60*2;
 
 const{
@@ -42,7 +42,7 @@ app.set('view engine', 'hbs');
 app.use('/', pages);
 app.use('/', require('./routes/user'));
 app.use('/', require('./routes/pages'));
-
+app.use(methodOverride('_method'));
 app.use('/auth' , auth);
 app.use('/admin', admin);
 app.use('/user', user);

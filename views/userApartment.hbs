@@ -11,8 +11,15 @@
   <header class="header" id="navigation-menu">
     <div class="container" >
       <nav>
+       
         <a href="#" class="logo"> <img src="/image/logo.png" alt=""> </a>
-
+ {{#each results}}
+        <ul class="nav-menu">
+          <li> <a href="/user/{{id}}" class="nav-link">Home</a> </li>
+           <li> <a href="/profile/{{id}}" class="nav-link">Profile</a> </li>
+          <li><a href = "/logout" class="nav-link">LOG Out </a></li>
+        </ul>
+        {{/each}}
         <div class="hambuger">
           <span class="bar"></span>
           <span class="bar"></span>

@@ -47,43 +47,84 @@ router.get('/resetPass', (req, res) => {
     res.render('resetPass');
 });
 
-router.get('/admin',redirectLogin, (req, res) => {
-    res.render('admin');
+router.get('/admin/:id',redirectLogin, (req, res) => {
+    const id = req.params.id;
+    db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
+        if(error)console.log(error)
+        else{
+            res.render('admin',{ results});
+        }
+    })
 });
 
-router.get('/user',redirectLogin, (req, res) => {
-    res.render('user');
+router.get('/user/:id',redirectLogin, (req, res) => {
+    const id = req.params.id;
+    db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
+        if(error)console.log(error)
+        else{
+            res.render('user',{ results});
+        }
+    })
 });
 
 router.get('/resendEmail', (req, res) => {
     res.render('emailVerfication');
 }); 
 
-router.get('/addApartment', (req, res) => {
-    res.render('addApartment');
-}); 
-
-router.get('/userapartment', (req, res) => {
-    db.query('SELECT * FROM apartment WHERE NOT remainingRoommates = 0' , (error , rows ) =>{
-        
+router.get('/addApartment/:id', (req, res) => {
+    const id = req.params.id;
+    db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
         if(error)console.log(error)
         else{
-            res.render('userApartment',{rows});
+            res.render('addApartment',{results});
+        }
+    })
+}); 
+
+router.get('/userapartment/:id', (req, res) => {
+    const id = req.params.id;
+    db.query('SELECT * FROM apartment WHERE NOT remainingRoommates = 0' , (error , rows ) =>{        
+        if(error)console.log(error)
+        else{
+            db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
+                if(error)console.log(error)
+                else{
+                    res.render('userApartment',{rows , results});
+                }
+            })
+           
         }
     })
 });
 
-router.get('/adminapartment', (req, res) => {
+router.get('/adminapartment/:id', (req, res) => {
+    const id = req.params.id;
     db.query('SELECT * FROM apartment WHERE NOT remainingRoommates = 0 ' , (error , rows ) =>{
         
         if(error)console.log(error)
         else{
-            res.render('adminApartment',{rows});
+            db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
+                if(error)console.log(error)
+                else{
+                    res.render('adminApartment',{rows , results});
+                }
+            })
+           
         }
     })
 });
 
-
+router.get('/profile/:id',redirectLogin, (req, res) => {
+    console.log("Hi")
+    let id = req.params.id;
+    db.query('SELECT * FROM user WHERE id = ? ' ,[id], (error , rows ) =>{
+         
+        if(error)console.log(error)
+        else{
+            res.render('profile',{rows});
+        }
+     })
+});
 
 
 
