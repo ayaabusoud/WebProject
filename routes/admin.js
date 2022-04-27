@@ -74,5 +74,27 @@ router.post('/apartmentDB', upload.single('apatrmentImage'), (req, res) => {
     })
 })
 
+router.get('/info/:id', function(req, res, next) {
+    console.log(req.param.id)
+    let id = req.params.id;
+    db.query('SELECT * FROM apartment WHERE id = ? ', [id], (error, rows) => {
+
+        if (error) console.log(error)
+        else {
+            res.render('info', { rows });
+        }
+    })
+})
+
+router.get('/delete/:id', function(req, res, next) {
+    console.log("delete")
+    let id = req.params.id;
+    db.query('DELETE FROM apartment WHERE id = ? ', id, (error, rows) => {
+        if (error) console.log(error)
+        else {
+            res.redirect('/adminApartment');
+        }
+    })
+})
 
 module.exports = router;
