@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit Apartment</title>
+</head>
+<body>
+    <h2>edit Apartments</h2>
+   
+ {{#each rows}}
+    <form method="POST" action="/admin/edit/{{id}}?_method=PUT" > 
+    <label for="html">Monthly Cost</label>
+    <input type="number" value="{{monthlyCost}}" name="monthlyCost" placeholder="Monthly Cost">
+    <label for="html">Space</label>
+    <input type="text" value="{{space}}" name="space" placeholder="Space">
+    <label for="html">Description</label>
+    <input type="text" value="{{description}}" name="description" placeholder="Description">
+    <label for="html">City</label>
+    <input type="text" value="{{city}}" name="city" placeholder="City">
+    <label for="html">Location</label>
+    <input type="text" value="{{location}}" name="location" placeholder="Location">
+    <label for="html">Number of rooms</label>
+    <input type="number" value="{{roomCount}}" name="roomCount" placeholder="Number of rooms">
+    <label for="html">Number of roomates</label>
+    <input type="number" value="{{roommates}}" name="roommates" placeholder="Number of roomates">
+    <label for="html">Number of remaining roomates</label>
+    <input type="number"value="{{remainingRoommates}}"  name="Remaining" placeholder="Number of remaining roomates">
+    <label for="html">Owner Name</label>
+    <input type="text" value="{{ownerName}}" name="ownerName" placeholder="Owner Name">
+    <label for="html">Owner Phone</label>
+    <input type="number"  value="{{ownerPhone}}" name="ownerPhone" placeholder="Owner Phone">
+    <input type="submit" value="edit" >
+     {{/each}}  
+    </form>
+   
+</body>
+</html>
