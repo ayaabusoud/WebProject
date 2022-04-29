@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,8 @@
  {{#each rows}}
     <form method="POST" action="/user/edit/{{id}}" > 
                 <label for="html">username</label>
-                <input type="text" value="{{username}}" placeholder="Username" name="username" >
-                <label for="html">Phone Number</label>
+                <input type="text" value="{{username}}" placeholder="UPhone Numbersername" name="username" > .... 
+                <label for="html"></label>
                 <input type="tel" value=" {{phonenumber}}" name="phonenumber" id="phone" placeholder="Phone Number" >
                 <label for="html">gender</label>
                 <input type="text" value="{{gender}}" name="gender" id="gender" placeholder="gender" >
@@ -22,6 +22,72 @@
                 <input type="submit">
      {{/each}}  
     </form>
-   
+</body>
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/addInfo.css">
+    <title>Edit Profile </title>
+</head>
+<style>
+    #AA{
+        margin-top: 20px;
+    }
+</style>
+
+<body>
+      <center>
+          <h2>Edit Profile </h2>
+      </center>  
+
+<div class="container">
+{{#each rows}}
+    <form method="POST" action="/admin/edit/{{id}}?_method=PUT" >
+    <div class="row">
+      <div class="col-25">
+        <label for="fname"> Username </label>
+      </div>
+      <div class="col-75">
+        <input type="text" value="{{username}}" placeholder="Username" name="username" > 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname"> Phone Number </label>
+      </div>
+      <div class="col-75">
+        <input type="tel" value=" {{phonenumber}}" name="phonenumber" id="phone" placeholder="Phone Number" >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname"> Gender </label>
+      </div>
+      <div class="col-75">
+        <input type="text" value="{{gender}}" name="gender" id="gender" placeholder="gender" >
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-25">
+        <label for="fname"> University </label>
+      </div>
+      <div class="col-75">
+        <input type="text" value="{{university}}" name="university" id="university" placeholder="university name" >
+      </div>
+    </div>
+        <div class="row">
+        <input id="AA" type="submit">
+    </div>
+  </form>
+  {{/each}}
+</div>
 </body>
 </html>
