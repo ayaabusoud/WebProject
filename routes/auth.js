@@ -36,7 +36,7 @@ router.post('/signup', async(req, res) => {
 
     let hashedPassword = await bcrypt.hash(password, 8);
 
-    db.query('SELECT email FROM user WHERE email = ? ', [email], (error, results) => {
+    db.query('SELECT * FROM user WHERE email = ? ', [email], (error, results) => {
         if (error) {
             console.log(error);
         }
@@ -49,13 +49,21 @@ router.post('/signup', async(req, res) => {
                 message2: 'Password does not match '
             });
         }
-
+        
+       
         db.query('INSERT INTO user SET ?', { email: email, username: username, password: hashedPassword, gender: gender, phonenumber: phonenumber, university: university }, (error, results) => {
             if (error) {
                 console.log(error)
             } else {
-
-                const transporter = nodemailer.createTransport({
+              db.query('SELECT * FROM user WHERE email = ? ', [email], (error, result) => {
+                if (error) {
+                    console.log(error);
+                }
+                else{
+                  req.session.userID = result[0];
+                  const id = result[0].id
+                  const username = result[0].username
+                  const transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
                         user: 'webbreakers2@gmail.com',
@@ -63,13 +71,11 @@ router.post('/signup', async(req, res) => {
                     },
                     tls: { rejectUnauthorized: false }
                 });
-
                 const mailOptions = {
                     from: 'webbreakers2@gmail.com',
                     to: req.body.email,
                     subject: 'Email verfication',
-                    text: 'Hello! \n To start exploring our website please click on this link http://localhost:5002/user\n from webbreakers team'
-
+                    html:`<h2>Hello ${username}!</h2><p>To start exploring our website please verify your email</p><a href="http://localhost:5002/user/${id}">click here</a><p>from webbreakers team</p>`
                 };
 
 
@@ -78,9 +84,12 @@ router.post('/signup', async(req, res) => {
                         console.log(error);
                     } else {
                         console.log('Email sent: ' + info.response);
-                        res.render('emailVerfication');
+                        res.render('emailVerfication',{email:result[0].email});
                     }
                 });
+                }
+              })
+                
 
             }
 
@@ -100,7 +109,7 @@ router.post('/signin', async(req, res) => { //           sign in
         if (results.length > 0) {
             bcrypt.compare(password, results[0].password, (err, response) => {
                 if (response) {
-                    req.session.userID = req.body;
+                   req.session.userID = req.body;
                     if (results[0].type === 'admin') {
                         return res.render('admin',{results});
                     } else {
@@ -146,8 +155,10 @@ router.post('/forgotPass', (req, res) => {
                 from: 'webbreakers2@gmail.com',
                 to: req.body.email,
                 subject: 'Reset your password',
-                text: 'Hello \n please reset your password using this link http://localhost:5002/resetPass\n from webbreakers team'
-
+                html: `<h3>Hello ${results[0].username}</h3>
+                <p>please reset your password using this link</p>
+                <a href="http://localhost:5002/resetPass/${results[0].id}">click here</a>
+                <p>from webbreakers team</p>`
             };
 
 
@@ -170,8 +181,7 @@ router.post('/forgotPass', (req, res) => {
     })
 })
 
-router.post('/resetPass', async(req, res) => {
-    const email = req.body.email;
+router.put('/resetPass/:id', async(req, res) => {
     const password = req.body.password;
     const passwordConfirm = req.body.passwordConfirm;
     let hashedPassword = await bcrypt.hash(password, 8);
@@ -180,11 +190,11 @@ router.post('/resetPass', async(req, res) => {
             massage: 'password does not match.'
         });
     }
-    db.query('SELECT email FROM user WHERE email = ? ', [email], (error, results) => {
+    db.query('SELECT * FROM user WHERE id = ? ', [req.params.id], (error, results) => {
         if (error) {
             console.log(error);
         } else if (results.length > 0) {
-            db.query('UPDATE user SET password = ? WHERE email = ?', [hashedPassword, email], function(err, result) {
+            db.query('UPDATE user SET password = ? WHERE email = ?', [hashedPassword, results[0].email], function(err, result) {
                 if (err) throw err;
                 console.log(result);
                 res.redirect('/signin');

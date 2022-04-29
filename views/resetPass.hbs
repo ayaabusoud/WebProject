@@ -9,15 +9,11 @@
     </head>
     <body class="passBody">
         <div class="container4">
-                 <form action="/auth/resetPass" method="POST" class="forgotPass-form">
+                 <form action="/auth/resetPass/{{id}}?_method=PUT" method="POST" class="forgotPass-form">
                      <h2 class="title">Reset your password</h2>
                      {{#if message }}
                      <h4 class="errorMsg">{{message}}</h4>
                      {{/if}}
-                     <div class="input-field">
-                        <i class="fa-solid fa-envelope"></i>
-                         <input type="email" placeholder="Email" name="email" required>
-                     </div>
                      <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" name="password" required>

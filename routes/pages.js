@@ -43,8 +43,8 @@ router.get('/forgotPass', (req, res) => {
     res.render('forgotPass');
 });
 
-router.get('/resetPass', (req, res) => {
-    res.render('resetPass');
+router.get('/resetPass/:id', (req, res) => {
+    res.render('resetPass',{id:req.params.id});
 });
 
 router.get('/admin/:id',redirectLogin, (req, res) => {
@@ -108,8 +108,7 @@ router.get('/adminapartment/:id', (req, res) => {
                 else{
                     res.render('adminApartment',{rows , results});
                 }
-            })
-           
+            })  
         }
     })
 });
