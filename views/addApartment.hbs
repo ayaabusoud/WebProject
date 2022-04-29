@@ -4,25 +4,109 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="/css/addInfo.css">
     <title>Add Apartment</title>
 </head>
 <body>
-    <h2>add Apartments</h2>
-    {{#each results}}
-    <form method="POST" action="/admin/apartmentDB/{{id}}" enctype="multipart/form-data">
-    <input type="number" name="monthlyCost" placeholder="Monthly Cost">
-    <input type="text" name="space" placeholder="Space">
-    <input type="text" name="description" placeholder="Description">
-    <input type="text" name="city" placeholder="City">
-    <input type="text" name="location" placeholder="Location">
-    <input type="number" name="roomCount" placeholder="Number of rooms">
-    <input type="number" name="roommates" placeholder="Number of roomates">
-    <input type="number" name="Remaining" placeholder="Number of remaining roomates">
-    <input type="text" name="ownerName" placeholder="Owner Name">
-    <input type="number" name="ownerPhone" placeholder="Owner Phone">
-    <input type="file" name="apatrmentImage" placeholder="apatrment Image" >
-    <input type="submit" >
-    </form>
-    {{/each}}
+<div class="topnav">
+  <a class="active" href="/">Home</a>
+  <a href="/apartments">Apartments</a>
+  <a href="signin">Log In</a>
+</div>
+<div class="container">
+
+   <form method="POST" action="/admin/apartmentDB" enctype="multipart/form-data">
+  <form action="/action_page.php">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Monthly Cost</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="monthlyCost" placeholder="$">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Space</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="space" placeholder="......">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">City</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="city" placeholder="......">
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-25">
+        <label for="lname">Location</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="location" placeholder="......">
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-25">
+        <label for="lname">Number of rooms </label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="roomCount" placeholder="......">
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-25">
+        <label for="lname">Number of roomates</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="roommates" placeholder="......">
+      </div>
+    </div>
+            <div class="row">
+      <div class="col-25">
+        <label for="lname">Number of remaining roomates</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="Remaining" placeholder="......">
+      </div>
+    </div>
+    
+        <div class="row">
+      <div class="col-25">
+        <label for="lname">Owner Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="ownerName" placeholder="......">
+      </div>
+    </div>
+        <div class="row">
+      <div class="col-25">
+        <label for="lname">Owner Phone</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="ownerPhone" placeholder="......">
+      </div>
+    </div>
+    
+    <div class="row">
+    <input type="file" name="apatrmentImage" id="imageInput" placeholder="apatrment Image" >
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Description</label>
+      </div>
+      <div class="col-75">
+        <textarea id="subject" name="description" placeholder="Write something.." style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+  </form>
+</div>
 </body>
 </html>
