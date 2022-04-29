@@ -226,14 +226,20 @@ html, body {
             <div class="product-price">
             <p>Owner Phone:  {{ownerPhone}}</p> 
             </div>
-            <form action="user/book/{{id}}" method="post">
-            {{!-- <input type="submit" value="Book now!"> --}}
             <div class="product-price">
             <p> {{monthlyCost}} $ <span>/per month</span> </p>
-            <a href="/paymentt/{{id}}" class="cart-btn">Book now</a>
             </div>
-            </form> 
-          </div>
+           <form action="/user/payment/{{id}}" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_51Ktc3KHaguLSLClfjaQQp9t4sXaqkMlsN44LvaJkhE1gLnRRUTZvwUwS7Jajj0rmkFPdWh81cjQPCPifizoGPHbE00TltsMdbH"
+          data-amount=""
+          data-name="Apartment Rent"
+          data-description="Student Housing apartment"
+          data-image="http://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto">
+        </script>
+        </form>
         </div>
         </center>
      {{/each}}   

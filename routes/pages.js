@@ -29,10 +29,6 @@ router.get('/', (req, res) => {
     res.render('home');
 });
 
-router.get('/paymentt/:id', (req, res) => {
-    const id = req.params.id;
-    res.render('paymentt',{id:id});
-});
 
 router.get('/signup', (req, res) => {
     res.render('signup');
@@ -110,7 +106,7 @@ router.get('/adminapartment/:id', (req, res) => {
             db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
                 if(error)console.log(error)
                 else{
-                    res.render('adminApartment',{rows , results});
+                    res.render('adminApartment',{rows , results , userid:id});
                 }
             })  
         }

@@ -43,17 +43,7 @@ db.connect((error) => {
  })  
 
 
-router.get('/info/:id', function(req, res, next) {
-    console.log(req.param.id)
-    let id = req.params.id;
-    db.query('SELECT * FROM apartment WHERE id = ? ', [id], (error, rows) => {
 
-        if (error) console.log(error)
-        else {
-            res.render('info', { rows });
-        }
-    })
-})
 
 router.delete('/delete/:id', function(req, res, next) {
     console.log("delete")
@@ -80,7 +70,7 @@ router.get('/edit/:id', function(req, res, next) {
    db.query('UPDATE apartment SET space = ?,monthlyCost = ?,description = ?,city = ?,location =?,roomCount = ?,ownerName=?,ownerPhone=?,roommates=?,remainingRoommates=? WHERE id = ?' , [req.body.space,req.body.monthlyCost,req.body.description,req.body.city,req.body.location,req.body.roomCount,req.body.ownerName,req.body.ownerPhone,req.body.roommates,req.body.Remaining, req.params.id], (error , rows ) =>{
      if(error)console.log(error)
      else{
-         res.redirect('/adminApartment');
+       res.redirect('/adminApartment');
      }
   
  })
@@ -88,28 +78,6 @@ router.get('/edit/:id', function(req, res, next) {
     
   })
 
-router.get('/info/:id', function(req, res, next) {
-    console.log(req.param.id)
-    let id = req.params.id;
-    db.query('SELECT * FROM apartment WHERE id = ? ', [id], (error, rows) => {
-
-        if (error) console.log(error)
-        else {
-            res.render('info', { rows });
-        }
-    })
-})
-
-router.get('/delete/:id', function(req, res, next) {
-    console.log("delete")
-    let id = req.params.id;
-    db.query('DELETE FROM apartment WHERE id = ? ', id, (error, rows) => {
-        if (error) console.log(error)
-        else {
-            res.redirect('/adminApartment');
-        }
-    })
-})
 
 
 

@@ -51,6 +51,9 @@
             <h4>{{remainingRoommates}} Remaining</h4>
             <h4>{{city}} </h4>
             <p> <span>$</span>{{monthlyCost}} <span>/per month</span> </p>
+            <form action="/user/info/{{id}}" method="get">
+            <input type="submit" value="see more">
+            </form>
           </div>
         </div>
      {{/each}}   
