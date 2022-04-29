@@ -29,6 +29,10 @@ router.get('/', (req, res) => {
     res.render('home');
 });
 
+router.get('/paymentt/:id', (req, res) => {
+    const id = req.params.id;
+    res.render('paymentt',{id:id});
+});
 
 router.get('/signup', (req, res) => {
     res.render('signup');
