@@ -40,8 +40,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.set('view engine', 'hbs');
 app.use('/', pages);
-app.use('/', require('./routes/user'));
-app.use('/', require('./routes/pages'));
 app.use(methodOverride('_method'));
 app.use('/auth' , auth);
 app.use('/admin', admin);
