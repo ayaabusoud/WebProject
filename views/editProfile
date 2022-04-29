@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit Profile</title>
+</head>
+<body>
+    <h2>edit Profile</h2>
+   
+ {{#each rows}}
+    <form method="POST" action="/user/edit/{{id}}" > 
+                <label for="html">username</label>
+                <input type="text" value="{{username}}" placeholder="Username" name="username" >
+                <label for="html">Phone Number</label>
+                <input type="tel" value=" {{phonenumber}}" name="phonenumber" id="phone" placeholder="Phone Number" >
+                <label for="html">gender</label>
+                <input type="text" value="{{gender}}" name="gender" id="gender" placeholder="gender" >
+                <label for="html">university name</label>
+                <input type="text" value="{{university}}" name="university" id="university" placeholder="university name" >
+                <input type="submit">
+     {{/each}}  
+    </form>
+   
+</body>
+</html>
