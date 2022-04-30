@@ -125,6 +125,21 @@ router.get('/profile/:id',redirectLogin, (req, res) => {
 });
 
 
+router.get('/apartments', (req, res) => {
+    db.query('SELECT * FROM apartment WHERE NOT remainingRoommates = 0 ' , (error , rows ) =>{
+        
+        if(error)console.log(error)
+        else{
+                if(error)console.log(error)
+                else{
+                    res.render('apartments',{rows});
+                }
+            }  
+        })
+   
+});
+
+
 
 
 module.exports = router;

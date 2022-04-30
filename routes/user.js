@@ -158,27 +158,7 @@ router.get('/edit/:id', function(req, res, next) {
                 });
               }
           })
-            
-            
-           /* db.query('SELECT * FROM user WHERE email = ?' , [req.body.email] , (error,result)=>{
-              if(error)console.log(error)
-              else{
-                db.query('INSERT INTO user_apartment SET ?' , {userID:result[0].id, apartmentID :req.params.id , bookDate:req.body.expdate} , (error,results)=>{
-                  if(error)console.log(error)
-                  else{
-                    db.query('UPDATE apartment SET remainingRoommates = remainingRoommates-1 WHERE id = ?' , [req.params.id] , (error,results)=>{
-                      if(error)console.log(error)
-                      else{
-                           console.log('success')
-                      }
-                    })
-                  }
-                })
-              }
-            })
-            
-          }
-         })*/
+
         })
 
    module.exports = router ;
