@@ -68,12 +68,11 @@ router.get('/edit/:id&:ID', function(req, res, next) {
  })
  
  router.put('/edit/:id&:ID', function(req, res, next) {
-   console.log(req.params)
    db.query('UPDATE apartment SET space = ?,monthlyCost = ?,description = ?,city = ?,location =?,roomCount = ?,ownerName=?,ownerPhone=?,roommates=?,remainingRoommates=? WHERE id = ?' , [req.body.space,req.body.monthlyCost,req.body.description,req.body.city,req.body.location,req.body.roomCount,req.body.ownerName,req.body.ownerPhone,req.body.roommates,req.body.Remaining, req.params.id], (error , rows ) =>{
      if(error)console.log(error)
      else{
       const userid = req.params.ID;
-      db.query('SELECT user.id AS ID,roommates,remainingRoommates,city,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =?' ,[userid] ,(error , rows ) =>{
+      db.query('SELECT user.id AS ID,roommates,monthlyCost,remainingRoommates,city,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =?' ,[userid] ,(error , rows ) =>{
           
           if(error)console.log(error)
           else{
