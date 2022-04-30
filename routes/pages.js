@@ -98,15 +98,16 @@ router.get('/userapartment/:id', (req, res) => {
 });
 
 router.get('/adminapartment/:id', (req, res) => {
-    const id = req.params.id;
-    db.query('SELECT * FROM apartment WHERE NOT remainingRoommates = 0 ' , (error , rows ) =>{
+    const userid = req.params.id;
+    db.query('SELECT user.id AS ID,roommates,remainingRoommates,city,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =?' ,[userid] ,(error , rows ) =>{
         
         if(error)console.log(error)
         else{
-            db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
+            db.query('SELECT * FROM user WHERE id = ?' ,[userid], (error , results ) =>{
                 if(error)console.log(error)
                 else{
-                    res.render('adminApartment',{rows , results , userid:id});
+                    console.log(rows)
+                    res.render('adminApartment',{rows , results});
                 }
             })  
         }

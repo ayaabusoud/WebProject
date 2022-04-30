@@ -56,9 +56,10 @@ router.delete('/delete/:id', function(req, res, next) {
     })
 })
 
-router.get('/edit/:id', function(req, res, next) {
+router.get('/edit/:id&:ID', function(req, res, next) {
+  console.log(req.params)
   let id = req.params.id;
-  db.query('SELECT * FROM apartment WHERE id = ? ' ,[id], (error , rows ) =>{
+  db.query('SELECT apartment.id,space,monthlyCost,description,city,location,roomCount,ownerName,ownerPhone,roommates,remainingRoommates,imageHere,user.id AS ID FROM apartment,user WHERE apartment.id = ? AND user.id = ? ' ,[id,req.params.ID], (error , rows ) =>{
     if(error)console.log(error)
     else{
         res.render('edit',{rows});
@@ -66,11 +67,25 @@ router.get('/edit/:id', function(req, res, next) {
  })
  })
  
- router.put('/edit/:id', function(req, res, next) {
+ router.put('/edit/:id&:ID', function(req, res, next) {
+   console.log(req.params)
    db.query('UPDATE apartment SET space = ?,monthlyCost = ?,description = ?,city = ?,location =?,roomCount = ?,ownerName=?,ownerPhone=?,roommates=?,remainingRoommates=? WHERE id = ?' , [req.body.space,req.body.monthlyCost,req.body.description,req.body.city,req.body.location,req.body.roomCount,req.body.ownerName,req.body.ownerPhone,req.body.roommates,req.body.Remaining, req.params.id], (error , rows ) =>{
      if(error)console.log(error)
      else{
-       res.redirect('/adminApartment');
+      const userid = req.params.ID;
+      db.query('SELECT user.id AS ID,roommates,remainingRoommates,city,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =?' ,[userid] ,(error , rows ) =>{
+          
+          if(error)console.log(error)
+          else{
+              db.query('SELECT * FROM user WHERE id = ?' ,[userid], (error , results ) =>{
+                  if(error)console.log(error)
+                  else{
+                      console.log(rows)
+                      res.render('adminApartment',{rows , results});
+                  }
+              })  
+          }
+      })
      }
   
  })
