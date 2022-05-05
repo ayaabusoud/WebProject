@@ -15,9 +15,9 @@
         <a href="#" class="logo"> <img src="/image/logo.png" alt=""> </a>
  {{#each results}}
         <ul class="nav-menu">
-          <li> <a href="/user/{{id}}" class="nav-link">Home</a> </li>
-           <li> <a href="/profile/{{id}}" class="nav-link">Profile</a> </li>
-          <li><a href = "/logout" class="nav-link">LOG Out </a></li>
+          <li> <a href="/user/{{id}}" class="nav-link" style="color: #C1B086;">Home</a> </li>
+           <li> <a href="/profile/{{id}}" class="nav-link" style="color: #C1B086;">Profile</a> </li>
+          <li><a href = "/logout" class="nav-link" style="color: #C1B086;">LOG Out </a></li>
         </ul>
         <div class="hambuger">
           <span class="bar"></span>
@@ -75,7 +75,7 @@
             <h4>{{city}} </h4>
             <p> <span>$</span>{{monthlyCost}} <span>/per month</span> </p>
             <form action="/user/info/{{id}}" method="get">
-            <input type="submit" value="see more">
+            <input type="submit" value="see more" style="background-color: #C1B086; width:30%; ">
             </form>
           </div>
         </div>

@@ -3,6 +3,13 @@ const sql = require("mysql");
 const router = express.Router();
 const stripe = require('stripe')('sk_test_51Ktc3KHaguLSLClfttD5Vl3jPNNBn7CtSa3ZKyiv0V0usrn0PBAZd6Bz2wYSZrlckVfmSicO6gKnb4GxW2lJyL4m00Gjvm0JIc')
 
+const redirectLogin = (req,res,next) =>{
+  if (!req.session.userID){
+    res.redirect('/signin')
+  }else{
+      next()
+  }
+}
 
   const db = sql.createConnection({
     host: 'localhost',
@@ -29,7 +36,7 @@ router.get('/edit/:id', function(req, res, next) {
        })
        })
        
-       router.post('/edit/:id', function(req, res, next) {
+       router.put('/edit/:id', function(req, res, next) {
          db.query('UPDATE user SET username = ?,phonenumber = ?,gender = ?,university = ? WHERE id = ?' , [req.body.username,req.body.phonenumber,req.body.gender,req.body.university, req.params.id], (error , rows ) =>{
            if(error)console.log(error)
            else{
@@ -57,7 +64,7 @@ router.get('/edit/:id', function(req, res, next) {
               }
           })
       })
-         router.post('/payment/:id', function(req, res, next) {
+         router.post('/payment/:id',redirectLogin, function(req, res, next) {
            console.log(req.body)
           db.query('SELECT * FROM apartment WHERE id = ?' , [req.params.id] , (error,result)=>{
             if(error)console.log(error)

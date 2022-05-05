@@ -15,9 +15,9 @@
         <a href="#" class="logo"> <img src="image/logo.png" alt=""> </a>
 
         <ul class="nav-menu">
-          <li> <a href="/" class="nav-link">Home</a> </li>
-          <li> <a href="/apartments" class="nav-link">Apartments</a> </li>
-          <li> <a href="signin" class="nav-link">Log In</a> </li>
+          <li> <a href="/" class="nav-link" style="color: #C1B086;">Home</a> </li>
+          <li> <a href="/apartments" class="nav-link" style="color: #C1B086;">Apartments</a> </li>
+          <li> <a href="signin" class="nav-link" style="color: #C1B086;">Log In</a> </li>
         </ul>
 
         <div class="hambuger">
@@ -75,6 +75,9 @@
             <h4>{{remainingRoommates}} Remaining</h4>
             <h4>{{city}} </h4>
             <p> <span>$</span>{{monthlyCost}} <span>/per month</span> </p>
+            <form action="/user/info/{{id}}" method="get">
+            <input type="submit" value="see more" style="background-color: #C1B086; width:30%; ">
+            </form>
           </div>
         </div>
      {{/each}}   

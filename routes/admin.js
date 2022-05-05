@@ -45,13 +45,25 @@ db.connect((error) => {
 
 
 
-router.delete('/delete/:id', function(req, res, next) {
+router.delete('/delete/:id&:ID', function(req, res, next) {
     console.log("delete")
     let id = req.params.id;
     db.query('DELETE FROM apartment WHERE id = ? ', id, (error, rows) => {
         if (error) console.log(error)
         else {
-            res.redirect('/adminApartment');
+          const userid = req.params.ID;
+          db.query('SELECT user.id AS ID,roommates,monthlyCost,remainingRoommates,city,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =?' ,[userid] ,(error , rows ) =>{
+              
+              if(error)console.log(error)
+              else{
+                  db.query('SELECT * FROM user WHERE id = ?' ,[userid], (error , results ) =>{
+                      if(error)console.log(error)
+                      else{
+                          res.render('adminApartment',{rows , results});
+                      }
+                  })  
+              }
+          })
         }
     })
 })
@@ -79,7 +91,6 @@ router.get('/edit/:id&:ID', function(req, res, next) {
               db.query('SELECT * FROM user WHERE id = ?' ,[userid], (error , results ) =>{
                   if(error)console.log(error)
                   else{
-                      console.log(rows)
                       res.render('adminApartment',{rows , results});
                   }
               })  

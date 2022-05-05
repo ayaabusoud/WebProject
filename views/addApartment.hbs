@@ -7,13 +7,9 @@
      <link rel="stylesheet" href="/css/addInfo.css">
     <title>Add Apartment</title>
 </head>
-<body>
-<div class="topnav">
-  <a class="active" href="/">Home</a>
-  <a href="/apartments">Apartments</a>
-  <a href="signin">Log In</a>
-</div>
-<div class="container">
+<body >
+
+<div class="container" >
 
  {{#each results}}
   <form method="POST" action="/admin/apartmentDB/{{id}}" enctype="multipart/form-data"  >
@@ -90,10 +86,15 @@
         <input type="text" id="lname" name="ownerPhone" placeholder="......">
       </div>
     </div>
-    
     <div class="row">
-    <input type="file" name="apatrmentImage" id="imageInput" placeholder="apatrment Image" >
+      <div class="col-25">
+        <label for="lname">Apartment image</label>
+      </div>
+      <div class="col-75">
+        <input type="file" name="apatrmentImage" id="imageInput" placeholder="apatrment Image"  >
+      </div>
     </div>
+    
     <div class="row">
       <div class="col-25">
         <label for="subject">Description</label>

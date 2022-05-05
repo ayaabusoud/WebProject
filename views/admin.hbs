@@ -24,7 +24,7 @@
         {{#each results}}
         <a href="#" class="logo"> <img src="/image/logo.png" alt=""> </a>
         <ul class="nav-menu">
-          <li> <a href="/adminapartment/{{id}}" class="nav-link">Apartments</a> </li>
+          <li> <a href="/adminapartment/{{id}}" class="nav-link" >Apartments</a> </li>
           <li> <a href="/addApartment/{{id}}" class="nav-link">add Apartment</a> </li>
           <li> <a href="/profile/{{id}}" class="nav-link">Profile</a> </li>
           <li><a href = "/logout" class="nav-link">LOG Out </a></li>
@@ -64,7 +64,7 @@
         <div class="text">
           <h1>Student Housings</h1>
           <p>A website that provide the available departments for students.</p>
-          <button>MORE INFO</button>
+          <button><a href="#about" style="color:#fff">MORE INFO</a></button>
         </div>
       </div>
       <div class="image">
@@ -84,71 +84,36 @@
     }
   </script>
 
+<script>
+    function img(anything) {
+      document.querySelector('.slide').src = anything;
+    }
 
- <!-- <section class="book">
+    function change(change) {
+      const line = document.querySelector('.image');
+      line.style.background = change;
+    }
+  </script>
+
+  <section class="about top" id="about">
     <div class="container flex">
-      <div class="input grid">
-      
-        <div class="box">
-          <label>city:</label> <br>
-          <input type="name" >
-        </div>
-        <div class="box">
-          <label>max price:</label> <br>
-          <input type="number" >
+      <div class="left">
+        <div class="img">
+          <img src="/image/a1.jpg" alt="" class="image1">
+         
         </div>
       </div>
-      <div class="search">
-        <input type="submit" value="SEARCH">
-      </div>
-    </div>
-  </section>-->
-  <section class="room top" id="Apartments" >
-    <div class="container">
-      <div class="heading_top flex1">
+      <div class="right">
         <div class="heading">
-          <h5>RAISING COMFORT TO THE HIGHEST LEVEL</h5>
-          <h2>Departments</h2>
+          <h5>RAISING COMFOMRT TO THE HIGHEST LEVEL</h5>
+          <h2>Welcome to Our Students Housing Website</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+          <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
-        <div class="button">
-          <button class="btn1">VIEW ALL</button>
-        </div>
-      </div>
-
-      <div class="content grid">
-        <div class="box">
-          <div class="img">
-            <img src="/image/r1.jpg" alt="">
-          </div>
-          <div class="text">
-            <h3>Superior Soble Rooms</h3>
-            <p> <span>$</span>129 <span>/per night</span> </p>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="/image/r2.jpg" alt="">
-          </div>
-          <div class="text">
-            <h3>Superior Soble Rooms</h3>
-            <p> <span>$</span>129 <span>/per night</span> </p>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img">
-            <img src="/image/r3.jpg" alt="">
-          </div>
-          <div class="text">
-            <h3>Superior Soble Rooms</h3>
-            <p> <span>$</span>129 <span>/per night</span> </p>
-          </div>
-        </div>
-        
-        
-        
       </div>
     </div>
   </section>
+
  
   <script>
     var accItem = document.getElementsByClassName('accordionItem');
