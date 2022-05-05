@@ -24,7 +24,7 @@ const stripe = require('stripe')('sk_test_51Ktc3KHaguLSLClfttD5Vl3jPNNBn7CtSa3ZK
     const {name} = req.query;
     searchInput = name;
     
-    
+    console.log(searchInput)
               
     db.query(`SELECT * FROM apartment WHERE city  LIKE '${name.toLowerCase()}%' `,   (error , rows) =>{ 
 

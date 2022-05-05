@@ -140,7 +140,24 @@ router.get('/apartments', (req, res) => {
    
 });
 
+router.get('/search',(req,res)=>{
+    const {name} = req.query;
+    searchInput = name;
+    
+    console.log(searchInput)
+              
+    db.query(`SELECT * FROM apartment WHERE city  LIKE '${name.toLowerCase()}%' `,   (error , rows) =>{ 
 
+        if(error)console.log(error)
+            else{
+                res.render('adminApartment',{rows,searchInput}) 
+                res.render('apartments',{rows,searchInput}) 
+                searchInput =name
+             
+            }
+    
+    })
+    });
 
 
 module.exports = router;
