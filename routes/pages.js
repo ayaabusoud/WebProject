@@ -146,13 +146,12 @@ router.get('/search',(req,res)=>{
     
     console.log(searchInput)
               
-    db.query(`SELECT * FROM apartment WHERE city  LIKE '${name.toLowerCase()}%' `,   (error , rows) =>{ 
+    db.query(`SELECT * FROM apartment WHERE NOT remainingRoommates = 0 AND city  LIKE '${name.toLowerCase()}%' `,   (error , rows) =>{ 
 
         if(error)console.log(error)
             else{
-                res.render('adminApartment',{rows,searchInput}) 
+               
                 res.render('apartments',{rows,searchInput}) 
-                searchInput =name
              
             }
     

@@ -20,7 +20,7 @@
            <li> <a href="/profile/{{id}}" class="nav-link">Profile</a> </li>
           <li><a href = "/logout" class="nav-link">LOG Out </a></li>
         </ul>
-{{/each}}
+
         <div class="hambuger">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -47,8 +47,8 @@
 
 
 
-<form id="form" action="/search" method="get"> 
-
+<form id="form" action="/admin/search/{{id}}" method="get"> 
+{{/each}}
   <input type="text" id="myInput" onkeyup="filter()" name="name"  placeholder="Search by City name.." title="Type in a name" value="{{searchInput}}"> 
   <br>
   {{!-- <button type="submit" style="color:red">  go search </button> --}}
