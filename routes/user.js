@@ -60,7 +60,7 @@ const stripe = require('stripe')('sk_test_51Ktc3KHaguLSLClfttD5Vl3jPNNBn7CtSa3ZK
       });
 
 
-    router.get('/apartments/search',(req,res)=>{
+    router.get('/search',(req,res)=>{
       const {name} = req.query;
       searchInput = name;
       
@@ -73,7 +73,6 @@ const stripe = require('stripe')('sk_test_51Ktc3KHaguLSLClfttD5Vl3jPNNBn7CtSa3ZK
                   
   
                   res.render('apartments',{rows,searchInput}) 
-               s  
                
               }
       
