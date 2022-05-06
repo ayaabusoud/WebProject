@@ -104,7 +104,25 @@ router.get('/edit/:id&:ID', function(req, res, next) {
   })
 
 
+  router.get('/search/:id',(req,res)=>{
+    const {name} = req.query;
+    searchInput = name;
+    console.log(searchInput)
+    const userid = req.params.id;
+    db.query(`SELECT user.id AS ID,monthlyCost,roommates,remainingRoommates,city,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =? AND city  LIKE '${name.toLowerCase()}%' `,[userid] ,(error , rows ) =>{
 
+        if(error)console.log(error)
+        else{
+            db.query('SELECT * FROM user WHERE id = ?' ,[userid], (error , results ) =>{
+                if(error)console.log(error)
+                else{
+                    console.log(rows)
+                    res.render('adminApartment',{rows , results , searchInput});
+                }
+            })
+        }
+    })
+    });
 
 
 module.exports = router;
