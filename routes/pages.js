@@ -158,5 +158,18 @@ router.get('/search/:sort',(req,res)=>{
     })
     });
 
-
+    router.get('/bookedRooms',(req,res)=>{
+       
+                  
+        db.query(`select a.id,a.username, a.university,a.phonenumber,a.email,b.city,b.location,b.remainingRoommates,b.description,b.id,c.bookdate,c.duedate from user a , user_apartment c , apartment b where c.userID =a.id and c.apartmentID=b.id`,   (error , rows) =>{ 
+    
+            if(error)console.log(error)
+                else{
+                   
+                    res.render('bookedRooms',{rows}) 
+                 
+                }
+        
+        })
+        });
 module.exports = router;
