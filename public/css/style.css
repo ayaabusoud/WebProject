@@ -667,3 +667,14 @@ footer li:hover {
     flex-direction: column-reverse;
   }
 }
+
+
+
+
+
+:root {
+  --select-border: rgb(91, 198, 234);
+  --select-focus: rgb(140, 140, 240);
+  --select-arrow: var(--select-border);
+}
+
