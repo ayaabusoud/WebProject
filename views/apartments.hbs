@@ -29,31 +29,26 @@
     </div>
   </header>
 
+
 <section class="room top" id="departments" >
+
     <div class="container">
-
-           <div id="filterSearch" >
-
-   {{!-- <label for="cars">Choose a car:</label>
-<select id="cars" name="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="fiat">Fiat</option>
-  <option value="audi">Audi</option>
-</select> --}}
-
-
-
-<form id="form" action="/search" method="get"> 
-
-  <input type="text" id="myInput" onkeyup="filter()" name="name"  placeholder="Search by City name.." title="Type in a name" value="{{searchInput}}"> 
-  <br>
-  {{!-- <button type="submit" style="color:red">  go search </button> --}}
-</form>
-                                                             
-              
-
+  <div id="cover">
+  <form method="get" action="/search">
+    <div class="tb">
+      <div class="td"><input type="text" name="name" placeholder="Search by City name ..." value="{{searchInput}}"></div>
+      <div class="td" id="s-cover">
+        <button type="submit">
+          <div id="s-circle"></div>
+          <span></span>
+        </button>
       </div>
+    </div>
+  </form>
+</div>
+
+
+
 
 
       <div class="heading_top flex1">
