@@ -11,8 +11,10 @@
     <title>Profile</title>
 </head>
 <style>
-    table {
+
+table {
   border-collapse: collapse;
+ 
 }
 th,
 td {
@@ -28,11 +30,16 @@ tfoot tr:last-child td {
 button{
     margin-top: 20px;
     margin-right: 20px;
+    padding: 10px 15px;
+}
+.btn-outline-primary{
+  margin-left: 610px;
 }
 </style>
 <body>
     <center>
 <table>
+  <h1 style="font-size: 30px;   margin-top: 70px;  margin-bottom:30px;">Profile Information</h1>
   <tbody>
        {{#each rows}}
     <tr>
@@ -60,19 +67,20 @@ button{
       <td><h6> Account creation date </h6> </td>
       <td>{{creationDate}}</td>
     </tr>
-    <form action="/user/edit/{{id}}" method="get">
+ 
+</table>
 
-    <button class="btn btn-outline-primary" value="edit profile info">Edit profile info</button>
+   <form action="/user/edit/{{id}}" method="get" >
+
+    <button  class="btn btn-outline-primary" value="edit profile info" style="float: left;" >Edit profile info</button>
 </form>
 <form action="/resetPass/{{id}}" method="get">
    {{!-- <input type="submit" value="change password">  --}}
-   <button class="btn btn-outline-secondary" value="change password" >change password</button>
+   <button class="btn btn-outline-secondary" value="change password" style="float: left;" >change password</button>
 </form>
-     {{/each}} 
-  </tbody>
-</table>
 
+     {{/each}}
     </center>
-
+ </tbody>
     </body>
 </html>
