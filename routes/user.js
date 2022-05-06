@@ -108,4 +108,24 @@ router.get('/edit/:id', function(req, res, next) {
         })
 
 
+        router.get('/search/:id',(req,res)=>{
+          const {name} = req.query;
+          searchInput = name;
+          console.log(searchInput)
+          const id = req.params.id;
+          db.query(`SELECT * FROM apartment WHERE NOT remainingRoommates = 0 AND city  LIKE '${name.toLowerCase()}%'` , (error , rows ) =>{
+              if(error)console.log(error)
+              else{
+                  db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
+                      if(error)console.log(error)
+                      else{
+                          res.render('userApartment',{rows , results ,searchInput });
+                      }
+                  })
+
+              }
+          })
+          });
+
+
    module.exports = router ;
