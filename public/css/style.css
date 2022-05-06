@@ -728,4 +728,30 @@ select::-ms-expand {
 }
 
  
+select:focus + .focus {
+  position: absolute;
+   top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px; 
+  border: 2px solid var(--select-focus);
+  border-radius: inherit;
+} 
+
+
+
+
+
+
+label {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+
+#form {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
 
