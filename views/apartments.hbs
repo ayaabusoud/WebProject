@@ -34,7 +34,7 @@
 
     <div class="container">
   <div id="cover">
-  <form method="get" action="/search">
+  <form id="form" method="get" action="/search">
     <div class="tb">
       <div class="td"><input type="text" name="name" placeholder="Search by City name ..." value="{{searchInput}}"></div>
       <div class="td" id="s-cover">
@@ -71,7 +71,7 @@
             <h4>{{city}} </h4>
             <p> <span>$</span>{{monthlyCost}} <span>/per month</span> </p>
             <form action="/user/info/{{id}}" method="get">
-            <input type="submit" value="see more" style="background-color: #C1B086; width:30%; ">
+            <input type="submit" value="see more" style="background-color: #C1B086; width:30%; height:40px;  font-size:15px; margin-top:5px">
             </form>
           </div>
         </div>

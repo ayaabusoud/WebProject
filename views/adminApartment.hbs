@@ -36,34 +36,20 @@
 
 
 
-<div id="filterSearch" >
 
-   {{!-- <label for="cars">Choose a car:</label>
-<select id="cars" name="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="fiat">Fiat</option>
-  <option value="audi">Audi</option>
-</select> --}}
-
-
-
+<div id="cover">
 <form id="form" action="/admin/search/{{id}}" method="get"> 
 {{/each}}
-  <input type="text" id="myInput" onkeyup="filter()" name="name"  placeholder="Search by City name.." title="Type in a name" value="{{searchInput}}"> 
-  <br>
-  {{!-- <button type="submit" style="color:red">  go search </button> --}}
-<div id="Select Filter">
-<div class="select">
-  <select id="standard-select" onchange="sort(this);">
-    <option value="" disabled selected>Sort By Price</option>
-    <option value="high">High</option>
-    <option value="low">Low</option>
-  </select>
-  <span class="focus"></span>
-</div>
-  </div>
-</form>                                                        
+    <div class="tb">
+      <div class="td"><input type="text" name="name" placeholder="Search by City name ..." value="{{searchInput}}"></div>
+      <div class="td" id="s-cover">
+        <button type="submit">
+          <div id="s-circle"></div>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </form>                                                       
  </div>
 
 
@@ -94,16 +80,16 @@
             <h4>{{remainingRoommates}} Remaining</h4>
             <h4>{{city}} </h4>
             <p> <span>$</span>{{monthlyCost}} <span>/per month</span> </p>
-            <div style="">
+            <div style="margin-top:5px;">
             <form action="/admin/edit/{{id}}&{{ID}}" method="get">
-            <input type="submit" value="edit" style="background-color: #C1B086;  width:30%; float:left" >
+            <input type="submit" value="edit" style="background-color: #C1B086;  width:30%; float:left; height:40px;  font-size:15px " >
             </form>
             
             <form action="/admin/delete/{{id}}&{{ID}}?_method=DELETE" method="POST">
-            <input type="submit" name = "delete" value="delete apartment" style="background-color: #C1B086;  width:38%; float:left ">
+            <input type="submit" name = "delete" value="delete apartment" style="background-color: #C1B086;  width:38%; float:left; height:40px;  font-size:15px ">
             </form>
             <form action="/user/info/{{id}}" method="get">
-            <input type="submit" value="see more" style="background-color: #C1B086;  width:30%;  float:left">
+            <input type="submit" value="see more" style="background-color: #C1B086;  width:30%;  float:left; height:40px;  font-size:15px">
             </form>  
             </div>
             

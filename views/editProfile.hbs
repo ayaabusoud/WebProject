@@ -15,11 +15,9 @@
 </style>
 
 <body>
-      <center>
-          <h2>Edit Profile </h2>
-      </center>  
 
 <div class="container">
+     <h1 style="font-size: 26px; text-align:center;">Edit Apartment</h1>
 {{#each rows}}
     <form method="POST" action="/user/edit/{{id}}?_method=PUT" >
     <div class="row">
@@ -36,7 +34,7 @@
         <label for="fname"> Phone Number </label>
       </div>
       <div class="col-75">
-        <input type="tel" value=" {{phonenumber}}" name="phonenumber" id="phone" placeholder="Phone Number" >
+        <input type="text" value=" {{phonenumber}}" name="phonenumber" id="phone" placeholder="Phone Number" >
       </div>
     </div>
 
