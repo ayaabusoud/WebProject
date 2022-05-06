@@ -52,11 +52,18 @@
   <input type="text" id="myInput" onkeyup="filter()" name="name"  placeholder="Search by City name.." title="Type in a name" value="{{searchInput}}"> 
   <br>
   {{!-- <button type="submit" style="color:red">  go search </button> --}}
-</form>
-                                                             
-              
-
-      </div>
+<div id="Select Filter">
+<div class="select">
+  <select id="standard-select" onchange="sort(this);">
+    <option value="" disabled selected>Sort By Price</option>
+    <option value="high">High</option>
+    <option value="low">Low</option>
+  </select>
+  <span class="focus"></span>
+</div>
+  </div>
+</form>                                                        
+ </div>
 
 
 
@@ -118,6 +125,12 @@ console.log("input " +inputValue);
   document.getElementById("myInput").innerHTML = inputValue; 
    form.submit();
  }
+
+ function sort(item){
+   varib = "{{rows}}";
+ }
+
+  
 </script>
 </body>
 </html>
