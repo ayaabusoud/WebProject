@@ -140,7 +140,7 @@ router.get('/apartments', (req, res) => {
    
 });
 
-router.get('/search/:sort',(req,res)=>{
+router.get('/search',(req,res)=>{
     const {name} = req.query;
     searchInput = name;
     
