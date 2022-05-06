@@ -143,8 +143,9 @@ router.get('/apartments', (req, res) => {
 router.get('/search',(req,res)=>{
     const {name} = req.query;
     searchInput = name;
-    
-    console.log(searchInput)
+    if(req.query == null)   res.render('apartments',{rows,searchInput}) ;
+   else{ 
+       console.log(searchInput)
               
     db.query(`SELECT * FROM apartment WHERE NOT remainingRoommates = 0 AND city  LIKE '${name.toLowerCase()}%' `,   (error , rows) =>{ 
 
@@ -156,6 +157,7 @@ router.get('/search',(req,res)=>{
             }
     
     })
+}
     });
 
     router.get('/bookedRooms',(req,res)=>{
