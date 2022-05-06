@@ -714,4 +714,18 @@ select::-ms-expand {
   background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 }
 
+.select select, .select::after {
+  grid-area: select;
+}
+.select:not(.select--multiple)::after {
+  content: "";
+  justify-self: end;
+  width: 0.8em;
+  height: 0.5em;
+  background-color: var(--select-arrow);
+  -webkit-clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+          clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+ 
 
