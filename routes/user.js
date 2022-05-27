@@ -1,6 +1,7 @@
 const express = require("express");
 const sql = require("mysql");
 const router = express.Router();
+const dbDebugger = require('debug')('app:db');
 const stripe = require('stripe')('sk_test_51Ktc3KHaguLSLClfttD5Vl3jPNNBn7CtSa3ZKyiv0V0usrn0PBAZd6Bz2wYSZrlckVfmSicO6gKnb4GxW2lJyL4m00Gjvm0JIc')
 
 const redirectLogin = (req,res,next) =>{
@@ -22,7 +23,7 @@ const redirectLogin = (req,res,next) =>{
     if (error) {
          console.log(error)
      } else {
-      console.log("MYSQL connected ...")
+      dbDebugger("MYSQL connected ...")
     }
    });
       
@@ -64,6 +65,18 @@ router.get('/edit/:id', function(req, res, next) {
               }
           })
       })
+
+      router.get('/infoguest/:id', function(req, res, next) {
+        console.log(req.param.id)
+        let id = req.params.id;
+        db.query('SELECT * FROM apartment WHERE id = ? ', [id], (error, rows) => {
+    
+            if (error) console.log(error)
+            else {
+                res.render('infoguest', { rows });
+            }
+        })
+    })
          router.post('/payment/:id',redirectLogin, function(req, res, next) {
            console.log(req.body)
           db.query('SELECT * FROM apartment WHERE id = ?' , [req.params.id] , (error,result)=>{
@@ -119,6 +132,7 @@ router.get('/edit/:id', function(req, res, next) {
                   db.query('SELECT * FROM user WHERE id = ?' ,[id], (error , results ) =>{
                       if(error)console.log(error)
                       else{
+                          if (rows[0] === undefined) res.render('userApartment',{message:`there is no available apartments in ${searchInput} city `}, results)
                           res.render('userApartment',{rows , results ,searchInput });
                       }
                   })

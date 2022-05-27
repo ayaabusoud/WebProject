@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/c5ca3e9c63.js" crossorigin="anonymous"></script>
     <title>Apartments Info</title>
 </head>
 <style>
   img{
-  border-radius: 8px;
-  padding: 5px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  width: 500px;
+  padding: 2px;
+  width: 350px;
   }
 p.a {
   font-family: 'Water Brush', cursive;
@@ -132,7 +126,7 @@ html, body {
   border: 2px solid #86939E;
   outline: none;
 }
- 
+
 .cable-config {
   border-bottom: 1px solid #E1E8EE;
   margin-bottom: 20px;
@@ -192,7 +186,7 @@ html, body {
  
       <div class="content grid">
           {{#each rows}}
-          <center>
+          
         <div class="box">
       <div class="product-description">
       <h1>Apartment Information</h1>
@@ -200,34 +194,33 @@ html, body {
     </div>
           <div class="img">
             <img src="data:image/png;base64,{{imageHere}}" alt="" >
+            <img src="data:image/png;base64,{{imageHere2}}" alt="" >
+            <img src="data:image/png;base64,{{imageHere3}}" alt="" >
           </div>
           <div class="text">
              <div class="product-price">
-            <h3>we have {{roommates}} Roommates</h3>
+            <p><i class="fa-solid fa-people-robbery"></i> Roommates: it has {{roommates}} Roommates</p>
             </div>
             <div class="product-price">
-            <h4>and {{remainingRoommates}} Remaining Roommates</h4>
+            <p> <i class="fa-solid fa-location-dot"></i> Location: {{city}} city, located in {{location}} </p>
             </div>
             <div class="product-price">
-            <p>We are in {{city}} </p>
+            <p> <i class="fa-solid fa-house-chimney"></i> Space: {{space}} meter sequare</p>
             </div>
             <div class="product-price">
-            <p>Space: {{space}}</p>
+            <p><i class="fa-solid fa-building"></i> Number of rooms: {{roomCount}} rooms</p>
+            </div>
+            <div class="product-price" style="width: 60%;">
+            <p> <i class="fa-solid fa-circle-info"></i> Description: {{description}}</p>
             </div>
             <div class="product-price">
-            <p>Number of rooms: {{roomCount}}</p>
+            <p><i class="fa-solid fa-person"></i> Owner Name: {{ownerName}}</p>
             </div>
             <div class="product-price">
-            <p>Description: {{description}}</p>
+            <p><i class="fa-solid fa-phone"></i> Owner Phone:  {{ownerPhone}}</p> 
             </div>
             <div class="product-price">
-            <p>Owner Name: {{ownerName}}</p>
-            </div>
-            <div class="product-price">
-            <p>Owner Phone:  {{ownerPhone}}</p> 
-            </div>
-            <div class="product-price">
-            <p> {{monthlyCost}} $ <span>/per month</span> </p>
+            <p><i class="fa-solid fa-dollar-sign"></i> Price: {{monthlyCost}}$ per month </p>
             </div>
            <form action="/user/payment/{{id}}" method="POST">
         <script
