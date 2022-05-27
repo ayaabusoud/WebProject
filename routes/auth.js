@@ -22,7 +22,43 @@ db.connect((error) => {
     }
 });
 
+router.get('/resendEmail/:email', (req, res) => {
+    const email = req.params.email;
+    db.query('SELECT * FROM user WHERE email = ? ', [email], (error, result) => {
+        if (error) {
+            console.log(error);
+        }
+        else{
+          req.session.userID = result[0];
+          const id = result[0].id
+          const username = result[0].username
+          const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'webbreakers2@gmail.com',
+                pass: 'web2backend'
+            },
+            tls: { rejectUnauthorized: false }
+        });
+        const mailOptions = {
+            from: 'webbreakers2@gmail.com',
+            to: email,
+            subject: 'Email verfication',
+            html:`<h2>Hello ${username}!</h2><p>To start exploring our website please verify your email</p><a href="http://localhost:5002/user/${id}">click here</a><p>from webbreakers team</p>`
+        };
 
+
+        transporter.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+                res.render('emailVerfication',{email:result[0].email});
+            }
+        });
+        }
+      })
+})
 router.post('/signup', async(req, res) => {
 
     const email = req.body.email;
