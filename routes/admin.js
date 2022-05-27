@@ -116,7 +116,7 @@ router.get('/edit/:id&:ID', function(req, res, next) {
             db.query('SELECT * FROM user WHERE id = ?' ,[userid], (error , results ) =>{
                 if(error)console.log(error)
                 else{
-                    console.log(rows)
+                    if (rows[0] === undefined) res.render('adminApartment',{message:`there is no available apartments in ${searchInput} city `,results})
                     res.render('adminApartment',{rows , results , searchInput});
                 }
             })

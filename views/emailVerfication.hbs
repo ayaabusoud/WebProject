@@ -9,13 +9,13 @@
     </head>
     <body class="passBody">
         <div class="container4">
-            <form action="/auth/resendEmail" method="POST" class="forgotPass-form">
+            <form action="/auth/resendEmail/{{email}}" method="GET" class="forgotPass-form">
                      <h2 class="title">Verify your email</h2>
                      <p>You're almost there! we have sent you an email to {{email}}</p>
                      <p>Just click on the link that we have sent to</p>
                      <p> go to your home page</p>
-                     <!--<p id="resend">if you don't see it, click here </p>
-                     <input class="btn" type="submit" value="Resend email">-->
+                     <p id="resend">if you don't see it, click here </p>
+                     <input class="btn" type="submit" value="Resend email">
                      {{#if message }}
                      <h4 class="errorMsg">{{message}}</h4>
                      {{/if}}

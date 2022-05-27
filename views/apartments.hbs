@@ -60,6 +60,9 @@
      
 
       <div class="content grid">
+        {{#if message }}
+        <h4 class="errorMsg">{{message}}</h4>
+        {{/if}}
           {{#each rows}}
         <div class="box">
           <div class="img">
@@ -68,9 +71,9 @@
           <div class="text">
             <h3>{{roommates}} Roommates</h3>
             <h4>{{remainingRoommates}} Remaining</h4>
-            <h4>{{city}} </h4>
+            <h4>{{city}}, {{location}}</h4>
             <p> <span>$</span>{{monthlyCost}} <span>/per month</span> </p>
-            <form action="/user/info/{{id}}" method="get">
+            <form action="/user/infoguest/{{id}}" method="get">
             <input type="submit" value="see more" style="background-color: #C1B086; width:30%; height:40px;  font-size:15px; margin-top:5px">
             </form>
           </div>

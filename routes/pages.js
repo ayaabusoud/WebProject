@@ -1,5 +1,6 @@
 const express = require("express");
 const sql = require("mysql");
+const dbDebugger = require('debug')('app:db');
 const router = express.Router();
 
 const redirectLogin = (req,res,next) =>{
@@ -21,7 +22,7 @@ const redirectLogin = (req,res,next) =>{
     if (error) {
          console.log(error)
      } else {
-      console.log("MYSQL connected ...")
+      dbDebugger("MYSQL connected ...")
     }
    });
 
@@ -99,7 +100,7 @@ router.get('/userapartment/:id', (req, res) => {
 
 router.get('/adminapartment/:id', (req, res) => {
     const userid = req.params.id;
-    db.query('SELECT user.id AS ID,monthlyCost,roommates,remainingRoommates,city,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =?' ,[userid] ,(error , rows ) =>{
+    db.query('SELECT user.id AS ID,monthlyCost,roommates,remainingRoommates,city,location,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =?' ,[userid] ,(error , rows ) =>{
         
         if(error)console.log(error)
         else{
@@ -151,8 +152,9 @@ router.get('/search',(req,res)=>{
 
         if(error)console.log(error)
             else{
-               
-                res.render('apartments',{rows,searchInput}) 
+            if (rows[0] === undefined) res.render('apartments',{message:`there is no available apartments in ${searchInput} city `})
+            else {res.render('apartments',{rows,searchInput}) }
+            
              
             }
     
