@@ -42,9 +42,6 @@ db.connect((error) => {
  })
  })  
 
-
-
-
 router.delete('/delete/:id&:ID', function(req, res, next) {
     console.log("delete")
     let id = req.params.id;
@@ -99,10 +96,7 @@ router.get('/edit/:id&:ID', function(req, res, next) {
      }
   
  })
- 
-    
   })
-
 
   router.get('/search/:id',(req,res)=>{
     const {name} = req.query;
@@ -117,12 +111,11 @@ router.get('/edit/:id&:ID', function(req, res, next) {
                 if(error)console.log(error)
                 else{
                     if (rows[0] === undefined) res.render('adminApartment',{message:`there is no available apartments in ${searchInput} city `,results})
-                    res.render('adminApartment',{rows , results , searchInput});
+                    res.render('adminApartment',{rows , results });
                 }
             })
         }
     })
     });
-
 
 module.exports = router;

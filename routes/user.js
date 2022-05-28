@@ -27,7 +27,7 @@ const redirectLogin = (req,res,next) =>{
     }
    });
       
-router.get('/edit/:id', function(req, res, next) {
+  router.get('/edit/:id', function(req, res, next) {
         let id = req.params.id;
         db.query('SELECT * FROM user WHERE id = ? ' ,[id], (error , rows ) =>{
           if(error)console.log(error)
@@ -36,8 +36,8 @@ router.get('/edit/:id', function(req, res, next) {
           }
        })
        })
-       
-       router.put('/edit/:id', function(req, res, next) {
+
+   router.put('/edit/:id', function(req, res, next) {
          db.query('UPDATE user SET username = ?,phonenumber = ?,gender = ?,university = ? WHERE id = ?' , [req.body.username,req.body.phonenumber,req.body.gender,req.body.university, req.params.id], (error , rows ) =>{
            if(error)console.log(error)
            else{
@@ -48,13 +48,10 @@ router.get('/edit/:id', function(req, res, next) {
               }
            })
            }
-        
-       })
-       
-          
+       })  
         })
 
-        router.get('/info/:id', function(req, res, next) {
+   router.get('/info/:id', function(req, res, next) {
           console.log(req.param.id)
           let id = req.params.id;
           db.query('SELECT * FROM apartment WHERE id = ? ', [id], (error, rows) => {
@@ -66,7 +63,7 @@ router.get('/edit/:id', function(req, res, next) {
           })
       })
 
-      router.get('/infoguest/:id', function(req, res, next) {
+   router.get('/infoguest/:id', function(req, res, next) {
         console.log(req.param.id)
         let id = req.params.id;
         db.query('SELECT * FROM apartment WHERE id = ? ', [id], (error, rows) => {
@@ -77,7 +74,7 @@ router.get('/edit/:id', function(req, res, next) {
             }
         })
     })
-         router.post('/payment/:id',redirectLogin, function(req, res, next) {
+   router.post('/payment/:id',redirectLogin, function(req, res, next) {
            console.log(req.body)
           db.query('SELECT * FROM apartment WHERE id = ?' , [req.params.id] , (error,result)=>{
             if(error)console.log(error)
@@ -121,7 +118,7 @@ router.get('/edit/:id', function(req, res, next) {
         })
 
 
-        router.get('/search/:id',(req,res)=>{
+   router.get('/search/:id',(req,res)=>{
           const {name} = req.query;
           searchInput = name;
           console.log(searchInput)
@@ -133,13 +130,11 @@ router.get('/edit/:id', function(req, res, next) {
                       if(error)console.log(error)
                       else{
                           if (rows[0] === undefined) res.render('userApartment',{message:`there is no available apartments in ${searchInput} city `}, results)
-                          res.render('userApartment',{rows , results ,searchInput });
+                          res.render('userApartment',{rows , results});
                       }
                   })
-
               }
           })
           });
-
 
    module.exports = router ;

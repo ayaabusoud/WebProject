@@ -30,7 +30,6 @@ router.get('/', (req, res) => {
     res.render('home');
 });
 
-
 router.get('/signup', (req, res) => {
     res.render('signup');
 });
@@ -93,7 +92,6 @@ router.get('/userapartment/:id', (req, res) => {
                     res.render('userApartment',{rows , results});
                 }
             })
-           
         }
     })
 });
@@ -101,7 +99,6 @@ router.get('/userapartment/:id', (req, res) => {
 router.get('/adminapartment/:id', (req, res) => {
     const userid = req.params.id;
     db.query('SELECT user.id AS ID,monthlyCost,roommates,remainingRoommates,city,location,apartment.id,imageHere FROM apartment,user WHERE NOT remainingRoommates = 0 AND user.id =?' ,[userid] ,(error , rows ) =>{
-        
         if(error)console.log(error)
         else{
             db.query('SELECT * FROM user WHERE id = ?' ,[userid], (error , results ) =>{
@@ -126,7 +123,6 @@ router.get('/profile/:id',redirectLogin, (req, res) => {
      })
 });
 
-
 router.get('/apartments', (req, res) => {
     db.query('SELECT * FROM apartment WHERE NOT remainingRoommates = 0 ' , (error , rows ) =>{
         
@@ -144,36 +140,27 @@ router.get('/apartments', (req, res) => {
 router.get('/search',(req,res)=>{
     const {name} = req.query;
     searchInput = name;
-    if(req.query == null)   res.render('apartments',{rows,searchInput}) ;
+    if(req.query == null)  res.render('apartments',{rows,searchInput}) ;
    else{ 
-       console.log(searchInput)
-              
+       console.log(searchInput)        
     db.query(`SELECT * FROM apartment WHERE NOT remainingRoommates = 0 AND city  LIKE '${name.toLowerCase()}%' `,   (error , rows) =>{ 
-
         if(error)console.log(error)
             else{
             if (rows[0] === undefined) res.render('apartments',{message:`there is no available apartments in ${searchInput} city `})
-            else {res.render('apartments',{rows,searchInput}) }
-            
-             
+            else {res.render('apartments',{rows}) }
             }
-    
     })
 }
     });
 
-    router.get('/bookedRooms',(req,res)=>{
-       
-                  
+ router.get('/bookedRooms',(req,res)=>{       
         db.query(`select DISTINCT c.userID,a.username, a.university,a.phonenumber,a.email,c.apartmentID,b.city,b.location,b.remainingRoommates,c.bookdate,c.duedate from user a , user_apartment c , apartment b where c.userID =a.id and c.apartmentID=b.id`,   (error , rows) =>{ 
     
             if(error)console.log(error)
                 else{
-                   
                     res.render('bookedRooms',{rows}) 
-                 
                 }
-        
         })
         });
+
 module.exports = router;
