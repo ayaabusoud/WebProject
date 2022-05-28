@@ -24,9 +24,9 @@
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" placeholder="Password" name="password" required>
+                        <input type="password" class="id_password" placeholder="Password" name="password"  id="password" required>
                         <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"></i>
+                        <i class="uil uil-eye-slash showHidePw"  id="togglePassword" onclick="showEye(1)"></i>
                     </div>
 
                     <div class="checkbox-text">
@@ -66,14 +66,14 @@
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" placeholder="Password" minlength="8" maxlength="28" name="password" required>
+                        <input type="password" class="id_password" placeholder="Password" minlength="8" maxlength="28" name="password"   required>
                         <i class="uil uil-lock icon"></i>
-                       <i class="uil uil-eye-slash showHidePw"></i>
+                       <i class="uil uil-eye-slash showHidePw"  id="togglePassword2" onclick="showEye(2)"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" placeholder="Confirm Password"minlength="8" maxlength="28" name="passwordConfirm"  required>
+                        <input type="password" class="id_password" placeholder="Confirm Password"minlength="8" maxlength="28" name="passwordConfirm"  required>
                         <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"></i>
+                        <i class="uil uil-eye-slash showHidePw"  id="togglePassword3" onclick="showEye(3)"></i>
                     </div>
                         <div class="input-field">
                         <input type="tel" name="phonenumber" id="phone" placeholder="Phone Number" required>
@@ -104,7 +104,9 @@
         </div>
     </div>
 
-   <script src="script.js"></script>
+   <script src="script.js">
+
+   </script>
 
 </body>
 </html>
