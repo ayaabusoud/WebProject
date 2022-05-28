@@ -163,6 +163,7 @@ header ul li a:hover {
 button {
   padding: 20px 40px;
   background: none;
+  z-index: 1000;
   outline: none;
   border: 2px solid white;
   border-radius: 50px;
