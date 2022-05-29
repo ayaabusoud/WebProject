@@ -6,7 +6,6 @@ const dbDebugger = require('debug')('app:db');
 const router = express.Router();
 
 
-
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -59,6 +58,8 @@ router.get('/resendEmail/:email', (req, res) => {
         }
       })
 })
+
+
 router.post('/signup', async(req, res) => {
 
     const email = req.body.email;
@@ -135,7 +136,6 @@ router.post('/signup', async(req, res) => {
 })
 
 
-
 router.post('/signin', async(req, res) => { //           sign in 
     const { email, password } = req.body;
     db.query('SELECT * FROM user WHERE email  = ?', [email], (error, results) => {
@@ -166,8 +166,6 @@ router.post('/signin', async(req, res) => { //           sign in
         }
     })
 })
-
-
 
 
 router.post('/forgotPass', (req, res) => {
