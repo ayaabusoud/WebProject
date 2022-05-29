@@ -43,23 +43,19 @@ body{
     transition: margin-left 0.18s ease;
 }
 
-.container.active .login{
-    margin-left: -50%;
-    opacity: 0;
-    transition: margin-left 0.18s ease, opacity 0.15s ease;
-}
+
 
 .container .signup{
-    opacity: 0;
-    transition: opacity 0.09s ease;
-}
-.container.active .signup{
     opacity: 1;
     transition: opacity 0.2s ease;
 }
 
-.container.active .forms{
+.container .forms{
     height: 650px;
+}
+
+.container .loginform{
+    height: 400px;
 }
 .container .form .title{
     position: relative;

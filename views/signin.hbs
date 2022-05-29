@@ -11,7 +11,7 @@
 <body>
     
     <div class="container">
-        <div class="forms">
+        <div class="forms loginform">
             <div class="form login">
                 <span class="title">Login</span>
 
@@ -30,10 +30,7 @@
                     </div>
 
                     <div class="checkbox-text">
-                        <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck">
-                            <label for="logCheck" class="text">Remember me</label>
-                        </div>
+                       
                         
                         <a href="forgotPass" class="text">Forgot password?</a>
                     </div>
@@ -45,68 +42,19 @@
 
                 <div class="login-signup">
                     <span class="text">Not a member?
-                        <a href="#" class="text signup-link">Signup now</a>
+                        <a href="/signup" class="text signup-link">Signup now</a>
                     </span>
                 </div>
             </div>
 
-            <!-- Registration Form -->
-            <div class="form signup">
-                <span class="title">Registration</span>
-                {{#if message2 }}
-                <h4 class="errorMsg">{{message2}}</h4>
-                {{/if}}
-                <form action="/auth/signup" method="POST" id="signup-form" >
-                    <div class="input-field">
-                        <input type="text" placeholder="Username" name="username" required>
-                        <i class="uil uil-user"></i>
-                    </div>
-                    <div class="input-field">
-                         <input type="email" placeholder="Email" name="email" required>
-                        <i class="uil uil-envelope icon"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" class="id_password" placeholder="Password" minlength="8" maxlength="28" name="password"   required>
-                        <i class="uil uil-lock icon"></i>
-                       <i class="uil uil-eye-slash showHidePw"  id="togglePassword2" onclick="showEye(2)"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" class="id_password" placeholder="Confirm Password"minlength="8" maxlength="28" name="passwordConfirm"  required>
-                        <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"  id="togglePassword3" onclick="showEye(3)"></i>
-                    </div>
-                        <div class="input-field">
-                        <input type="tel" name="phonenumber" id="phone" placeholder="Phone Number" required>
-                        <i class="uil uil-phone"></i>
-                    </div>
-                     <div class="input-field">
-                        <input type="text" name="gender" id="gender" placeholder="gender" required>
-                        <i class="uil uil-user"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" name="university" id="university" placeholder="university name" required>
-                        <i class="uil uil-user"></i>
-                    </div>
-                    
-                
 
-                    <div class="input-field button">
-                        <input class="btn" id="submit" type="submit" value="SignUp">
-                    </div>
-                </form>
-
-                <div class="login-signup">
-                    <span class="text">Not a member?
-                        <a href="#" class="text login-link">Signup now</a>
-                    </span>
-                </div>
             </div>
         </div>
     </div>
 
-   <script src="script.js">
-
-   </script>
+ 
+<script src="script.js"></script>
+   
 
 </body>
 </html>

@@ -78,11 +78,11 @@ router.post('/signup', async(req, res) => {
         }
         if (results.length > 0) {
             return res.render('signup', {
-                message2: 'This email already exists '
+                message: 'This email already exists '
             })
         } else if (password !== passwordConfirm) {
             return res.render('signup', {
-                message2: 'Password does not match '
+                message: 'Password does not match '
             });
         }
         
