@@ -26,7 +26,7 @@
                     <div class="input-field">
                         <input type="password" class="id_password" placeholder="Password" name="password"  id="password" required>
                         <i class="uil uil-lock icon"></i>
-                        <i class="uil uil-eye-slash showHidePw"  id="togglePassword" onclick="showEye(1)"></i>
+                        <i class="uil uil-eye-slash showHidePw"  id="togglePassword" onclick="showEye()"></i>
                     </div>
 
                     <div class="checkbox-text">
@@ -53,7 +53,22 @@
     </div>
 
  
-<script src="script.js"></script>
+<script>
+     function showEye(){
+      let element = document.getElementById("togglePassword");
+      const password = document.querySelector('.id_password');
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+
+     password.setAttribute('type', type);
+     if(type =='text'){
+        element.classList.add('uil-eye');
+        element.classList.remove('uil-eye-slash');
+     }
+     else {
+        element.classList.remove('uil-eye');
+        element.classList.add('uil-eye-slash');
+     } };
+</script>
    
 
 </body>
